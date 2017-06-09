@@ -5,4 +5,4 @@ import ReactDOM from 'react-dom';
 import PostBrowser from './components/PostBrowser';
 
 // Render main components
-ReactDOM.render(<PostBrowser subreddit="reactjs" page="1" />, document.getElementById('posts-browser'));
+ReactDOM.render(<PostBrowser subreddit="worldnews"/>, document.getElementById('posts-browser'));

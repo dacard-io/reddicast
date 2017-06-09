@@ -35,6 +35,15 @@ if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && lo
 
 }); // End of Document Ready
 
+while (true) {
+  //*** Packery Layout settings
+  var post_container = $('.posts-container');
+  var isotope_properties = {
+    itemSelector: '.post',
+  }
+  post_container.packery(isotope_properties); // Refresh layout
+}
+
 // When window finishes loading
 $(window).on('load', function(){
 
@@ -42,14 +51,6 @@ $(window).on('load', function(){
     //post_container.packery(isotope_properties);
   });
 
-  //*** Packery Layout settings
-  /*
-  var post_container = $('.posts-container');
-  var isotope_properties = {
-    itemSelector: '.post',
-  }
-  post_container.packery(isotope_properties); // Refresh layout
-  */
 });
 
 // Push menu button action

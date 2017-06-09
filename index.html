@@ -18,16 +18,55 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
+        <!-- Fancybox -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.css" />
+
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
         <style>
         /* Add to styles later please */
+        h1 {
+            font-size: 4em;
+        }
+        h2 {
+            font-size: 3em;
+        }
+        .post.media .post-content {
+            margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid rgb(56, 52, 52);
+        }
+        .navigation h2 {
+            font-size: 1.3em;
+        }
         .post-react-renderer {
             display: flex;
             flex-wrap: wrap;
         }
         .post-shortdesc {
             word-wrap: break-word;
+        }
+        .post.media img {
+            max-width: 100%;
+        }
+        .post.media.selected {
+            width: 66.6%;
+        }
+        @media (max-width: 1024px) {
+            body {
+                font-size: 13px;
+            }
+            .post {
+                width: 50%;
+            }
+        }
+        @media (max-width: 668px) {
+            body {
+                font-size: 11px;
+            }
+            .post {
+                width: 100%;
+            }
         }
         </style>
     </head>
@@ -164,6 +203,7 @@
         <!-- Your JS Files -->
         <script src="assets/js/packery.pkgd.min.js"></script>
         <script src="assets/js/jquery.waypoints.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.0.47/jquery.fancybox.min.js"></script>
         <script src="assets/js/main.js"></script>
         
         
