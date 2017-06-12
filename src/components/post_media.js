@@ -9,6 +9,25 @@ export default class MediaPost extends Component {
 		// Shorten title
 		var title_maxlength = 50;
 		var post_title = this.props.title;
+		/*
+		var post_date = new Date(this.props.date);
+
+		function formatDate(date) {
+		  var monthNames = [
+		    "January", "February", "March",
+		    "April", "May", "June", "July",
+		    "August", "September", "October",
+		    "November", "December"
+		  ];
+
+		  var day = date.getDate();
+		  var monthIndex = date.getMonth();
+		  var year = date.getFullYear();
+
+		  return monthNames[monthIndex] + ' ' + day + ', ' + year;
+		}
+		*/
+
 
 		// If title too long, truncate and add ellipsis
 		if (post_title.length > title_maxlength) {
@@ -24,7 +43,7 @@ export default class MediaPost extends Component {
                 <div className="post-content">
                     <h3 className="post-title" title={this.props.title}>{post_title}</h3>
                     <div className="post-meta">
-                        <span className="">{Date(parseInt(this.props.date))}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+                        <span className="">{this.props.date}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
                         <span className="">{this.props.subreddit}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
                         <a className="post-link" href={'//reddit.com' + this.props.permalink}>View Post</a>
                     </div>

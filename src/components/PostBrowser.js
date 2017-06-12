@@ -19,8 +19,7 @@ export default class PostBrowser extends Component {
 		};
 	}
 
-	// On Component Mount (Runs after render :o)
-	componentDidMount() {
+	fetchPosts() {
 		axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
 	      .then(res => {
 	        const posts = res.data.data.children.map(obj => obj.data);
@@ -32,12 +31,19 @@ export default class PostBrowser extends Component {
 			    itemSelector: '.post',
 		  	});
 
-	        console.log(this.state.posts);
-	      });
+	        //console.log(this.state.posts);
+	      }).catch(function (error) {
+		    console.log(error);
+		    // Append error element
+		    ReactDOM.render(<h3 className="error"><i className="fa fa-close"></i>&nbsp;&nbsp;Could not find subreddit</h3>, document.getElementById('posts-browser'));
+		  });
+	}
 
+	// On Component Mount (Runs after render :o)
+	componentDidMount() {		
+	  	//console.log("Run after components loaded");
+	  	this.fetchPosts(); // Remember to self refer this component to get the function
 
-		
-	  	console.log("Run after components loaded");
 	  	//post_container.packery(isotope_properties);
 	}
 
@@ -61,7 +67,6 @@ export default class PostBrowser extends Component {
     	// Loop to push posts in array to render
     	this.state.posts.map((post, index) => {
     		//console.log(post.post_hint);
-    		console.log(post.post_hint);
 
     		/*** Check for post hints to determine what is displayed ***/
     		
@@ -72,7 +77,7 @@ export default class PostBrowser extends Component {
 
     			}
     			else if (post.post_hint == "image" || post.post_hint == "rich:video") {
-    				console.log(post.url)
+    				//console.log(post.url)
     				posts_arr.push(
 		    			<MediaPost key={post.id} 
 		    				title={post.title} 

@@ -31,6 +31,10 @@
         h2 {
             font-size: 3em;
         }
+        .error {
+            width: 100%;
+            text-align: center;
+        }
         .post.media .post-content {
             margin-top: 2rem;
             padding: 1rem;
@@ -38,6 +42,24 @@
         }
         .navigation h2 {
             font-size: 1.3em;
+        }
+        .push-menu a {
+            color: black;
+            transition: all 0.2s linear;
+        }
+        .push-menu a:hover {
+            color: #c0392b;
+        }
+        .push-menu ul li:first-child {
+            border-top: none;
+        }
+        li input {
+            padding: 0;
+            width: 100%;
+        }
+        li.add-sub a {
+            /*border-bottom: 1px solid #c0392b;*/
+            padding: 0;
         }
         .post-react-renderer {
             display: flex;
@@ -76,15 +98,8 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="push-menu">
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">HOME</a></li>
-        </ul>
+    <div id="subreddit-menu" class="push-menu">
+        <!-- Append menu items here -->
     </div>
 
     <div class="app-wrapper"> <!-- This class is to help manipulate the DOM without touching the body of the document -->
@@ -102,85 +117,7 @@
 
              <div class="section posts-section">
                 <div id="posts-browser" class="container posts-container">
-                <!--
-                    <div class="block post">
-                        <div class="post-content">
-                            <h3 class="post-title">Did World War III Start on the Precise Day of the ECM?</h3>
-                            <div class="post-meta">
-                                <span class="">Sunday, October 4th, 2015</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <span class="">r/worldnews</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <a class="" href="#">View Post</a>
-                            </div>
-                            <p class="post-shortdesc">Martin Armstrong on his blog about 2015.75 and one particular political decision: “Russia began bombing CIA-trained rebels in Syria precisely on the day of the turn in the Economic Confidence Model. As CNN pointed out, the bombing continues. Now, hundreds of Iranian troops have arrived in Syria to join a major ground offensive in support of President Bashar al-Assad’s government.<br/><br/>Clearly, the civil war in Syria is escalating. We will see this unfold as a proxy war directly between U.S. and Russia with China supporting the Russian side in this game. This conflict is turning regional and global in scope by drawing in the world powers all because the U.S. war machine thinks this is a game. […] This should be of great concern because historically, whatever unfolds on the precise day of the ECM, becomes an important event.” Read the whole article on Martin Armstrongs Blog.</p>
-                        </div>
-                    </div>
-
-                    <div class="block post">
-                        <div class="post-content">
-                            <h3 class="post-title">Did World War III Start on the Precise Day of the ECM?</h3>
-                            <div class="post-meta">
-                                <span class="">Sunday, October 4th, 2015</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <span class="">r/worldnews</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <a class="" href="#">View Post</a>
-                            </div>
-                            <p class="post-shortdesc">Martin Armstrong on his blog about 2015.75 and one particular political decision: “Russia began bombing CIA-trained rebels in Syria precisely on the day of the turn in the Economic Confidence Model. As CNN pointed out, the bombing continues. Now, hundreds of Iranian troops have arrived in Syria to join a major ground offensive in support of President Bashar al-Assad’s government.<br/><br/>Clearly, the civil war in Syria is escalating. We will see this unfold as a proxy war directly between U.S. and Russia with China supporting the Russian side in this game. This conflict is turning regional and global in scope by drawing in the world powers all because the U.S. war machine thinks this is a game. […] This should be of great concern because historically, whatever unfolds on the precise day of the ECM, becomes an important event.” Read the whole article on Martin Armstrongs Blog.</p>
-                        </div>
-                    </div>
-
-                    <div class="block post featured">
-                        <div class="post-content">
-                            <h3 class="post-title">Featured Post!</h3>
-                            <div class="post-meta">
-                                <span class="">Sunday, October 4th, 2015</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <span class="">r/worldnews</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <a class="" href="#">View Post</a>
-                            </div>
-                            <p class="post-shortdesc">Martin Armstrong on his blog about 2015.75 and one particular political decision: “Russia began bombing CIA-trained rebels in Syria precisely on the day of the turn in the Economic Confidence Model. As CNN pointed out, the bombing continues. Now, hundreds of Iranian troops have arrived in Syria to join a major ground offensive in support of President Bashar al-Assad’s government.<br/><br/>Clearly, the civil war in Syria is escalating. We will see this unfold as a proxy war directly between U.S. and Russia with China supporting the Russian side in this game. This conflict is turning regional and global in scope by drawing in the world powers all because the U.S. war machine thinks this is a game. […] This should be of great concern because historically, whatever unfolds on the precise day of the ECM, becomes an important event.” Read the whole article on Martin Armstrongs Blog.</p>
-                        </div>
-                    </div>
-
-                    <div class="block post headline">
-                        <div class="post-content">
-                            <h3 class="post-title">Did World War III Start on the Precise Day of the ECM?</h3>
-                            <div class="post-meta">
-                                <span class="">Sunday, October 4th, 2015</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <span class="">r/worldnews</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <a class="" href="#">View Post</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="block post media">
-                        <div class="post-content">
-                            <h3 class="post-title">Did World War III Start on the Precise Day of the ECM?</h3>
-                            <div class="post-meta">
-                                <span class="">Sunday, October 4th, 2015</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <span class="">r/worldnews</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <a class="" href="#">View Post</a>
-                            </div>
-                            <figure class="post-media">
-                                <video id="mainVid0" class="video main-player-video" autoplay muted controls poster="data:image/gif,AAAA" title="" style="width:100%;background:transparent no-repeat url('assets/images/loading.svg');background-size:contain;background-position:center;">
-                                  <source type="video/webm" data-ng-src="https://giant.gfycat.com/NauticalSpotlessIndianglassfish.webm" src="https://giant.gfycat.com/NauticalSpotlessIndianglassfish.webm">
-                                  <source type="video/mp4" data-ng-src="https://giant.gfycat.com/NauticalSpotlessIndianglassfish.mp4" src="https://giant.gfycat.com/NauticalSpotlessIndianglassfish.mp4">
-                                </video>
-                            </figure>
-                        </div>
-                    </div>
-
-                    <div class="block post media">
-                        <div class="post-content">
-                            <h3 class="post-title">Did World War III Start on the Precise Day of the ECM?</h3>
-                            <div class="post-meta">
-                                <span class="">Sunday, October 4th, 2015</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <span class="">r/worldnews</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                                <a class="" href="#">View Post</a>
-                            </div>
-                            <figure class="post-media">
-                                <img src="https://media.giphy.com/media/3og0IKODGUT9SjxIha/giphy.gif" height="auto"/>
-                            </figure>
-                        </div>
-                    </div>
-                -->
+                    <!-- Append post items here -->
                 </div>
             </div>
             <div class="loading-posts">
