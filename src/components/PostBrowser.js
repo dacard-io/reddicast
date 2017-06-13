@@ -45,23 +45,24 @@ export default class PostBrowser extends Component {
 	  	this.fetchPosts(); // Remember to self refer this component to get the function
 
 	  	//post_container.packery(isotope_properties);
+	  	// Run packery afterwards to create layout
+	  	window.setInterval(function(){
+	    	var post_container = document.querySelector('.posts-container');
+		  	var isotope_properties = new Packery (post_container, {
+			    itemSelector: '.post',
+		  	});
+		  }, 3000);
 	}
 
 	// When component updates
 	componentDidUpdate() {
 		console.log("After mount")
-		
-		// Run packery afterwards to create layout
-    	var post_container = document.querySelector('.posts-container');
-	  	var isotope_properties = new Packery (post_container, {
-		    itemSelector: '.post',
-	  	});
 
 	}
 
 	// Render posts
     render() {
-    	//console.log(posts)
+    	console.log(this.state.posts)
     	var posts_arr = [];
 
     	// Loop to push posts in array to render

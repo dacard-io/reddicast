@@ -31,6 +31,28 @@
         h2 {
             font-size: 3em;
         }
+        input[type="search"] {
+            padding: 1rem 0;
+            text-align: center;
+            border-bottom: 3px solid #c0392b;
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
+        }
+        .search-icon {
+            width: 40px;
+            display: initial;
+            position: absolute;
+            margin-top: 1.0rem;
+            font-size: 1.3em;
+            color: #cccccc;
+        }
+        .post-title {
+            font-size: 1.5em;
+        }
+        .post.headline .post-title {
+            font-size: 4em;
+        }
         .error {
             width: 100%;
             text-align: center;
@@ -60,6 +82,9 @@
         li.add-sub a {
             /*border-bottom: 1px solid #c0392b;*/
             padding: 0;
+        }
+        #viewing-sub {
+            display: inline-block;
         }
         .post-react-renderer {
             display: flex;
@@ -111,7 +136,7 @@
                 <div class="container">
                     <a class="push-menu-button"><i class="fa fa-bars"></i>&nbsp;&nbsp;MENU</a>
                     <h1 class="logo-text">THE REDDICAST</h1>
-                    <h2 class="logo-subtitle">June 1, 2017&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;A client for reddit <i class="fa fa-reddit"></i>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-up" aria-hidden="true"></i> DOW +3.93%</h2>
+                    <h2 class="logo-subtitle">A client for reddit <i class="fa fa-reddit"></i>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;r/<span id="viewing-sub"></span></h2>
                 </div>
             </div>
 

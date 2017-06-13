@@ -35,22 +35,6 @@ if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && lo
 
 }); // End of Document Ready
 
-
-//*** Packery Layout settings
-var post_container = $('.posts-container');
-var isotope_properties = {
-  itemSelector: '.post',
-}
-//post_container.packery(isotope_properties); // Refresh layout
-
-/*
-window.setInterval(function(){
-  /// call your function here
-  post_container.packery(isotope_properties); // Refresh layout
-}, 1000);
-*/
-
-
 // When window finishes loading
 $(window).on('load', function(){
 

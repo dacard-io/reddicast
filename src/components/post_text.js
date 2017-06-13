@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import moment from 'moment' // Include moment.js
 
 /* Posts are stateless components that just render data. */
 export default class TextPost extends Component {
@@ -7,28 +8,11 @@ export default class TextPost extends Component {
 
 		// Shorten title
 		var title_maxlength = 120;
+		var description_max_length = 600;
 		var post_title = this.props.title;
 
-		/*
-		var post_date = new Date(this.props.date);
-
-		
-		function formatDate(date) {
-		  var monthNames = [
-		    "January", "February", "March",
-		    "April", "May", "June", "July",
-		    "August", "September", "October",
-		    "November", "December"
-		  ];
-
-		  var day = date.getDate();
-		  var monthIndex = date.getMonth();
-		  var year = date.getFullYear();
-
-		  return monthNames[monthIndex] + ' ' + day + ', ' + year;
-		}
-		*/
-		
+		var post_date = Date(this.props.date);
+		var post_date = String(moment(post_date).format('MMMM Do, YYYY h:mm a'));
 
 		// If title too long, truncate and add ellipsis
 		if (post_title.length > title_maxlength) {
@@ -37,11 +21,27 @@ export default class TextPost extends Component {
 
 		// If post content has stuff in it, show this element
 		var postDescription;
-		if (this.props.content) {
-			postDescription = (
-				<p className="post-shortdesc">{decodeURI(this.props.content)}</p>
-			)
+
+		function htmlDecode(input){
+		  var e = document.createElement('div');
+		  e.innerHTML = input;
+		  return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
 		}
+
+		if (this.props.content) {
+			// Not the recommended way of doing things, but I want to force HTML entities onto an element
+			// so I use the dangerouslySetInnerHTML on the <p> element below
+			postDescription = htmlDecode(this.props.content);
+
+			console.log(postDescription)
+			
+			// If description too long, truncate and add ellipsis
+			if (post_title.length > title_maxlength) {
+				post_title = post_title.substring(0, title_maxlength - 3) + "..."; // The -3 is to add the dots and keep the same max size of title
+			}
+			postDescription = {__html: postDescription}
+		}
+		
 
 		/* You can do this inline for an if conditional. But holy hell its ugly
 		{this.props.content ?
@@ -56,11 +56,11 @@ export default class TextPost extends Component {
                 <div className="post-content">
                     <h3 className="post-title" title={this.props.title}>{post_title}</h3>
                     <div className="post-meta">
-                        <span className="">{this.props.post_date}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
+                        <span className="">{post_date}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
                         <span className="">{this.props.subreddit}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
                         <a className="post-link" href={'//reddit.com' + this.props.permalink} target="_new">View Post</a>
                     </div>
-                    {postDescription}
+                    <div dangerouslySetInnerHTML={postDescription}></div>
                 </div>
             </div>
 		)

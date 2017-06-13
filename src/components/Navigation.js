@@ -23,6 +23,7 @@ export default class Navigation extends Component {
 			'dataisbeautiful',
 			'DIY',
 			'Documentaries',
+			'economics',
 			'explainlikeimfive',
 			'Fitness',
 			'food',
@@ -57,6 +58,7 @@ export default class Navigation extends Component {
 			'Showerthoughts',
 			'space',
 			'sports',
+			'stocks',
 			'Technology',
 			'television',
 			'tifu',
@@ -82,6 +84,7 @@ export default class Navigation extends Component {
 		// Set page title
 		document.title = this.state.current_sub + " | Reddicast";
 		ReactDOM.render(<PostBrowser subreddit={this.state.current_sub}/>, document.getElementById('posts-browser'));
+		ReactDOM.render(<div>{this.state.default_sub}</div>, document.getElementById('viewing-sub'));
 	}
 
 
@@ -92,7 +95,8 @@ export default class Navigation extends Component {
 		// Umount post browser currently loaded
 		ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
 		// Render new post browser
-	    ReactDOM.render(<PostBrowser subreddit={sub}/>, document.getElementById('posts-browser'));
+	    ReactDOM.render(<PostBrowser subreddit={this.state.current_sub}/>, document.getElementById('posts-browser'));
+	    ReactDOM.render(<div>{this.state.current_sub}</div>, document.getElementById('viewing-sub'));
   	}
 
   	viewSub(sub) {
@@ -102,9 +106,11 @@ export default class Navigation extends Component {
 	  		// Umount post browser currently loaded
 			ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
 			// Render new post browser
-		    ReactDOM.render(<PostBrowser subreddit={sub}/>, document.getElementById('posts-browser'));
+		    ReactDOM.render(<PostBrowser subreddit={this.state.current_sub}/>, document.getElementById('posts-browser'));
+		    ReactDOM.render(<div>{this.state.current_sub}</div>, document.getElementById('viewing-sub'));
   		} else {
   			// Go default sub set by app
+  			this.setState({ current_sub: this.state.default_sub });
   			// Umount post browser currently loaded
 			ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
 			// Render new post browser
@@ -120,7 +126,7 @@ export default class Navigation extends Component {
 
     	// Add a seperate link for adding subreddits
     	//sub_links.push(<li key="add-sub"className="add-sub"><a href="#" onClick={this.addSub.bind(this)}><i className="fa fa-plus-circle"></i>&nbsp;&nbsp;Add Sub</a></li>);
-    	sub_links.push(<li key="view-sub" className="add-sub"><input type="search" onChange={event => this.viewSub(event.target.value)} placeholder="Enter Subreddit" /></li>);
+    	sub_links.push(<li key="view-sub" className="add-sub"><i className="fa fa-search search-icon"></i><input type="search" onChange={event => this.viewSub(event.target.value)} placeholder="Enter Subreddit" /></li>);
 
 
     	// Loop to push posts in array to render
