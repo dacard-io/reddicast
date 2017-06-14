@@ -54,7 +54,7 @@ $('.push-menu-button').on("mousedown", function(){
 var waypoint = $('.loading-posts').waypoint(function(direction) {
     // Events go here
     if (direction == "down") {
-      console.log("Pull more posts");
+      //console.log("Pull more posts");
     }
 }, {
     offset: '100%' // Trigger event at element

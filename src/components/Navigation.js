@@ -87,34 +87,33 @@ export default class Navigation extends Component {
 		ReactDOM.render(<div>{this.state.default_sub}</div>, document.getElementById('viewing-sub'));
 	}
 
+	// When component states are changed
+	componentDidUpdate() {
+		console.log("State changed")
+		// Set state
+		document.title = this.state.current_sub + " | Reddicast";
+
+		// Umount post browser currently loaded
+		ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
+		ReactDOM.unmountComponentAtNode(document.getElementById('viewing-sub'));
+		// Render new post browser
+	    ReactDOM.render(<PostBrowser subreddit={this.state.current_sub}/>, document.getElementById('posts-browser'));
+	    ReactDOM.render(<div>{this.state.current_sub}</div>, document.getElementById('viewing-sub'));
+	}
+
 
 	handleClick(sub) {
 		// Set state
 		this.setState({ current_sub: sub });
-
-		// Umount post browser currently loaded
-		ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
-		// Render new post browser
-	    ReactDOM.render(<PostBrowser subreddit={this.state.current_sub}/>, document.getElementById('posts-browser'));
-	    ReactDOM.render(<div>{this.state.current_sub}</div>, document.getElementById('viewing-sub'));
   	}
 
   	viewSub(sub) {
   		// If sub not empty, go to sub
   		if (sub != "") {
 	  		this.setState({ current_sub: sub });
-	  		// Umount post browser currently loaded
-			ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
-			// Render new post browser
-		    ReactDOM.render(<PostBrowser subreddit={this.state.current_sub}/>, document.getElementById('posts-browser'));
-		    ReactDOM.render(<div>{this.state.current_sub}</div>, document.getElementById('viewing-sub'));
   		} else {
   			// Go default sub set by app
   			this.setState({ current_sub: this.state.default_sub });
-  			// Umount post browser currently loaded
-			ReactDOM.unmountComponentAtNode(document.getElementById('posts-browser'));
-			// Render new post browser
-		    ReactDOM.render(<PostBrowser subreddit={this.state.default_sub}/>, document.getElementById('posts-browser'));
   		}
   		
   	}

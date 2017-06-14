@@ -122,9 +122,11 @@
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div id="subreddit-menu" class="push-menu">
-        <!-- Append menu items here -->
+    <div class="col">
+        <div id="subreddit-menu" class="push-menu">
+            <!-- Append menu items here -->
+        </div>
+        <div class="about">About this App</div>
     </div>
 
     <div class="app-wrapper"> <!-- This class is to help manipulate the DOM without touching the body of the document -->
@@ -145,7 +147,16 @@
                     <!-- Append post items here -->
                 </div>
             </div>
-            <div class="loading-posts">
+            <style>
+            .load-more-overlay {
+                /*background: red;*/
+                height: 112px;
+                width: 100%;
+                position: absolute;
+            }
+            </style>
+            <div id="load-more" class="loading-posts">
+                <div class="load-more-overlay"></div>
                 <p>Loading More Posts...</p>
                 <img src="assets/images/loading.svg"/>
             </div>

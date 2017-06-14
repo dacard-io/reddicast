@@ -15,6 +15,9 @@ module.exports = {
     }]
   },
   resolve: {
+    alias: {
+      'waypoints': 'waypoints/lib'
+    },
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
