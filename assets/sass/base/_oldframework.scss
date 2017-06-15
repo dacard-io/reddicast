@@ -1,0 +1,360 @@
+// A base CSS framework to cut down on code
+
+/* Okay so I created three primary classes to use for
+   layouts. Blocks are used for sections, and it's flex
+   direction is column. Wrappers are dynamic width and
+   height sized, and the direction is in row format. And
+   cols are columns.
+*/
+
+// Load Fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:300);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+// Declare theme settings to easily change the entire appearance easily
+$heading-font: 'Roboto', sans-serif;
+$global-font: 'Roboto Slab', serif;
+
+
+// Declare mixins for flexbox!
+@mixin flex-group($direction, $align, $justify) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: $align;
+	justify-content: $justify;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	//border: 1px solid red;
+}
+
+/* Typography */
+h1 { font-family: $heading-font; font-size: 42px; font-weight: 700; color: $light_content; margin: 0; padding: 0;}
+h2 { font-family: $heading-font; font-size: 36px; font-weight: 700; color: $light_content; margin: 0; padding: 0;}
+h3 { font-family: $heading-font; font-size: 28px; font-weight: 600; color: $light_content; margin: 0; padding: 0;}
+h4 { font-family: $heading-font; font-size: 19px; font-weight: 400; color: $light_content; margin: 0; padding: 0;}
+p { font-family: $global-font; font-size: 18px; font-weight: 400; color: $light_content; }
+a { font-family: $global-font; color: $light_content; }
+
+// Style important Wrappers
+html, body {
+	width: 100%;
+	height: 100%;
+}
+.main-wrapper {
+	height: 100%;
+	width: 100%;
+}
+
+.block {
+	@include flex-group(column, center, center);
+	flex-wrap: nowrap;
+	position: relative;
+	&.text {
+		&.left {
+			text-align: left;
+		}
+		&.right {
+			text-align: right;
+		}
+		&.center {
+			text-align: center;
+		}
+	}
+	&.full-height {
+		@include flex-group(row, stretch, center);
+		flex-grow: 1;
+	}
+	&.full-page {
+		min-width: 100%;
+		max-width: 100%;
+		min-height: 100%;
+		max-height: 100%;
+	}
+	&.half-page {
+		max-width: 50%;
+		min-width: 50%;
+		max-height: 100%;
+		min-height: 100%;
+		box-shadow: inset 0px -5px 11px -5px rgba(0,0,0,0.5);
+	}
+	&.white {
+		background:#fff;	
+	}
+	&.light-gray {
+		background:#fafafb;
+		border-top:1px solid #f0f0f0;
+		border-bottom:1px solid #f0f0f0;
+	}
+	&.full-width {
+		display: block;
+		float: left;
+		width: 100%;
+	}
+	&.height-fifty {
+		max-height: 50%;
+		min-height: 50%;
+	}
+	&.ninety-five {
+		display: block;
+		float: left;
+		max-width: 95%;
+		min-width: 95%;
+	}
+	&.ninety {
+		display: block;
+		float: left;
+		max-width: 95%;
+		min-width: 95%;
+	}
+	&.eightyfive {
+		display: block;
+		float: left;
+		max-width: 85%;
+		min-width: 85%;
+	}
+	&.eighty {
+		display: block;
+		float: left;
+		max-width: 80%;
+		min-width: 80%;
+	}
+	&.seventyfive {
+		display: block;
+		float: left;
+		max-width: 75%;
+		min-width: 75%;
+	}
+	&.seventy {
+		display: block;
+		float: left;
+		max-width: 70%;
+		min-width: 70%;
+	}
+	&.sixtysix {
+		display: block;
+		float: left;
+		max-width: 66%;
+		min-width: 66%;
+	}
+	&.sixty {
+		display: block;
+		float: left;
+		max-width: 60%;
+		min-width: 60%;
+	}
+	&.fifty {
+		display: block;
+		float: left;
+		max-width: 50%;
+		min-width: 50%;
+	}
+	&.fourty {
+		display: block;
+		float: left;
+		max-width: 40%;
+		min-width: 40%;
+	}
+	&.thirtythree {
+		display: block;
+		float: left;
+		max-width: 33%;
+		min-width: 33%;
+	}
+	&.thirty {
+		display: block;
+		float: left;
+		max-width: 30%;
+		min-width: 30%;
+	}
+	&.twentyfive {
+		display: block;
+		float: left;
+		max-width: 25%;
+		min-width: 25%;
+	}
+	&.twenty {
+		display: block;
+		float: left;
+		max-width: 20%;
+		min-width: 20%;
+	}
+	&.fifteen {
+		display: block;
+		float: left;
+		max-width: 15%;
+		min-width: 15%;
+	}
+	&.ten {
+		display: block;
+		float: left;
+		max-width: 10%;
+		min-width: 10%;
+	}
+	&.left {
+		float: left;
+	}
+	&.right {
+		float: right;
+	}
+	&.light-gray {
+		background: #f2f1f6;
+	}
+	&.dark-gray {
+		background: #333237;
+	}
+	&.diag-pattern {
+		background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMScgaGVpZ2h0PScyMicgdmlld0JveD0nMCAwIDUgMTAnPgoJPHJlY3Qgd2lkdGg9JzExMCUnIHg9Jy01JScgeT0nLTUlJyBoZWlnaHQ9JzExMCUnIGZpbGw9JyNmZmYnLz4KCTxsaW5lIHgxPSctMicgeTE9JzEnIHgyPSc3JyB5Mj0nMTAnIHN0cm9rZT0nI2VlZWVlZScgc3Ryb2tlLXdpZHRoPScxLjQ1Jy8+Cgk8bGluZSB4MT0nLTInIHkxPSc2JyB4Mj0nNycgeTI9JzE1JyBzdHJva2U9JyNlZWVlZWUnIHN0cm9rZS13aWR0aD0nMS40NScvPgoJPGxpbmUgeDE9Jy0yJyB5MT0nLTQnIHgyPSc3JyB5Mj0nNScgc3Ryb2tlPScjZWVlZWVlJyBzdHJva2Utd2lkdGg9JzEuNDUnLz4KPC9zdmc+);
+	}
+}
+.col {
+	@include flex-group(column, center, center);
+	overflow: hidden;
+	&.full-height {
+		max-height: 100%;
+		min-height: 100%;
+	}
+	&.height-fifty {
+		max-height: 50%;
+		min-height: 50%;
+	}
+	&.full-width {
+		max-width: 100%;
+		min-width: 100%;
+	}
+	&.ninetyfive {
+		max-width: 95%;
+		min-width: 95%;
+		flex-grow: 1;
+	}
+	&.ninety {
+		max-width: 90%;
+		min-width: 90%;
+		flex-grow: 1;
+	}
+	&.eighty {
+		max-width: 80%;
+		min-width: 80%;
+		flex-grow: 1;
+	}
+	&.seventyfive {
+		max-width: 75%;
+		min-width: 75%;
+		flex-grow: 1;
+	}
+	&.seventy {
+		max-width: 70%;
+		min-width: 70%;
+		flex-grow: 1;
+	}
+	&.sixtysix {
+		max-width: 66%;
+		min-width: 66%;
+		flex-grow: 1;
+	}
+	&.sixty {
+		max-width: 60%;
+		min-width: 60%;
+		flex-grow: 1;
+	}
+	&.fifty {
+		max-width: 50%;
+		min-width: 50%;
+		flex-grow: 1;
+	}
+	&.forty {
+		max-width: 40%;
+		min-width: 40%;
+		flex-grow: 1;
+	}
+	&.thirtythree {
+		max-width: 33%;
+		min-width: 33%;
+		flex-grow: 1;
+	}
+	&.thirty {
+		max-width: 30%;
+		min-width: 30%;
+		flex-grow: 1;
+	}
+
+	&.twentyfive {
+		max-width: 25%;
+		min-width: 25%;
+		flex-grow: 1;
+	}
+	&.twenty {
+		max-width: 20%;
+		min-width: 20%;
+		flex-grow: 1;
+	}
+	&.ten {
+		max-width: 10%;
+		min-width: 10%;
+		flex-grow: 1;
+	}
+	&.text {
+		&.left {
+			align-items: flex-start;
+		}
+		&.right {
+			align-items: flex-end;
+		}
+	}
+}
+.wrapper {
+	@include flex-group(row, center, center);
+	flex-wrap: wrap;
+	&.full-width {
+		min-width: 100%;
+		max-width: 100%;
+	}&.full-height {
+		min-height: 100%;
+		max-height: 100%;
+ 	}
+ 	&.ninety-five {
+		min-width: 95%;
+		max-width: 95%;
+	}
+	&.ninety {
+		min-width: 90%;
+		max-width: 90%;
+	}
+	&.eighty {
+		min-width: 80%;
+		max-width: 80%;
+	}
+ 	&.seventy {
+		min-width: 70%;
+		max-width: 70%;
+	}
+	&.fifty {
+		min-width: 50%;
+		max-width: 50%;
+	}
+	&.thirty {
+		min-width: 30%;
+		max-width: 30%;
+	}
+	&.twenty {
+		min-width: 20%;
+		max-width: 20%;
+	}
+	&.stretch {
+		align-content: stretch;
+	}
+	&.left {
+		@include flex-group(row, center, flex-start);
+	}
+	&.right {
+		@include flex-group(row, center, flex-end);
+	}
+	&.center {
+		@include flex-group(row, center, center);
+	}
+	&.diag-pattern {
+		background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMScgaGVpZ2h0PScyMicgdmlld0JveD0nMCAwIDUgMTAnPgoJPHJlY3Qgd2lkdGg9JzExMCUnIHg9Jy01JScgeT0nLTUlJyBoZWlnaHQ9JzExMCUnIGZpbGw9JyNmZmYnLz4KCTxsaW5lIHgxPSctMicgeTE9JzEnIHgyPSc3JyB5Mj0nMTAnIHN0cm9rZT0nI2VlZWVlZScgc3Ryb2tlLXdpZHRoPScxLjQ1Jy8+Cgk8bGluZSB4MT0nLTInIHkxPSc2JyB4Mj0nNycgeTI9JzE1JyBzdHJva2U9JyNlZWVlZWUnIHN0cm9rZS13aWR0aD0nMS40NScvPgoJPGxpbmUgeDE9Jy0yJyB5MT0nLTQnIHgyPSc3JyB5Mj0nNScgc3Ryb2tlPScjZWVlZWVlJyBzdHJva2Utd2lkdGg9JzEuNDUnLz4KPC9zdmc+);
+	}
+}

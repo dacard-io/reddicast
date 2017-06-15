@@ -1,0 +1,61 @@
+.post {
+
+	width: 33.3%;
+
+	.post-content {
+		margin: 1rem;
+	}
+	.post-title {
+		font-size: 1.5em;
+		font-weight: 700;
+		line-height: 100%;
+		margin: 0 0 .5rem 0;
+	}
+	.post-meta {
+		display: flex;
+		font-family: $heading-font;
+		font-size: .8em;
+	}
+	.post-shortdesc {
+		color: #676767;
+	}
+
+	&.featured {
+		.post-content {
+			border: 1px solid $content-color;
+			padding: 1rem;
+		}
+	}
+	&.headline {
+		margin: 2rem 0;
+		width: 100%;
+		.post-title {
+			font-size: 4em;
+			font-weight: 800;
+			font-family: $heading-font;
+			line-height: 80%;
+			text-transform: uppercase;
+		}
+		.post-meta {
+			justify-content: center;
+		}
+	}
+	&.media {
+		.post-media {
+			margin: 1rem 0 0 0;
+
+			img {
+				min-height: 160px;
+				min-width: 100%;
+				background: url('../images/loading.svg') no-repeat; // A loading image while actual image is loading
+				background-size: contain;
+				background-position: center center;
+			}
+		}
+		.post-content {
+			margin-top: 2rem;
+            padding: 1rem;
+            border: 1px solid rgb(56, 52, 52);
+		}
+	}
+}

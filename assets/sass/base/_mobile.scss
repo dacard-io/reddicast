@@ -1,0 +1,50 @@
+/**
+* RESPONSIVE STYLESHEET
+**/
+$xl-width: 1400px;
+$lg-width: 1200px;
+$md-width: 1024px;
+$sm-width: 792px;
+$xs-width: 568px;
+
+
+@media (max-width: $xl-width), (min-width: $xl-width) {
+	
+}
+@media (max-width: $lg-width) {
+	
+}
+@media (max-width: $md-width) {
+	body {
+        font-size: 13px;
+    }
+    .post {
+        width: 50%;
+    }
+}
+@media (max-width: $sm-width) {
+	body {
+        font-size: 11px;
+    }
+    .navigation {
+    	h1 {
+    		margin-top: 0;
+    		margin-right: 1rem;
+    	}
+    	.logo-subtitle {
+    		display: none;
+    	}
+    	.container {
+	    	align-items: flex-end;
+	    }
+    }
+    .post {
+        width: 100%;
+        &.headline {
+        	margin: 0;
+        }
+    }
+}
+@media (max-width: $xs-width) {
+	
+}

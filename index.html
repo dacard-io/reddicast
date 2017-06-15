@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Front Page | Reddicast</title>
-        <meta name="description" content="">
+        <meta name="description" content="Quick and easy newspaper-like client for viewing Reddit.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -25,56 +25,6 @@
 
         <style>
         /* Add to styles later please */
-        h1 {
-            font-size: 4em;
-        }
-        h2 {
-            font-size: 3em;
-        }
-        input[type="search"] {
-            padding: 1rem 0;
-            text-align: center;
-            border-bottom: 3px solid #c0392b;
-            border-left: 0;
-            border-right: 0;
-            border-top: 0;
-        }
-        .search-icon {
-            width: 40px;
-            display: initial;
-            position: absolute;
-            margin-top: 1.0rem;
-            font-size: 1.3em;
-            color: #cccccc;
-        }
-        .post-title {
-            font-size: 1.5em;
-        }
-        .post.headline .post-title {
-            font-size: 4em;
-        }
-        .error {
-            width: 100%;
-            text-align: center;
-        }
-        .post.media .post-content {
-            margin-top: 2rem;
-            padding: 1rem;
-            border: 1px solid rgb(56, 52, 52);
-        }
-        .navigation h2 {
-            font-size: 1.3em;
-        }
-        .push-menu a {
-            color: black;
-            transition: all 0.2s linear;
-        }
-        .push-menu a:hover {
-            color: #c0392b;
-        }
-        .push-menu ul li:first-child {
-            border-top: none;
-        }
         li input {
             padding: 0;
             width: 100%;
@@ -86,10 +36,7 @@
         #viewing-sub {
             display: inline-block;
         }
-        .post-react-renderer {
-            display: flex;
-            flex-wrap: wrap;
-        }
+        
         .post-shortdesc {
             word-wrap: break-word;
         }
@@ -99,21 +46,15 @@
         .post.media.selected {
             width: 66.6%;
         }
-        @media (max-width: 1024px) {
-            body {
-                font-size: 13px;
-            }
-            .post {
-                width: 50%;
-            }
+        .push-menu-container {
+            display: flex;
+            flex-direction: column;
         }
-        @media (max-width: 668px) {
-            body {
-                font-size: 11px;
-            }
-            .post {
-                width: 100%;
-            }
+        .about-app {
+            background: #c0392b;
+            color: white;
+            font-size: .8em;
+            cursor: pointer;
         }
         </style>
     </head>
@@ -122,19 +63,27 @@
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="col">
+    <div class="col push-menu-container">
         <div id="subreddit-menu" class="push-menu">
             <!-- Append menu items here -->
         </div>
-        <div class="about">About this App</div>
+    </div>
+
+    <div class="popover invisible">
+        <div class="popover-content text-center">
+            <h2>Reddicast</h2>
+            <span>v1.0.0 / <a href="https://github.com/dacard-io/reddicast" target="_blank">View Source on Github</a></span>
+            <p>Client for Reddit, that turns viewing content into a more streamlined experience. To get started, open up the side menu and begin browsing through Subreddits. You can also search for subreddits and their content in real-time using using the search bar in the menu.</p>
+            <p><i>Built by <a href="http://dacard.io" target="_blank">Dacard.io</a></i></p>
+        </div>
     </div>
 
     <div class="app-wrapper"> <!-- This class is to help manipulate the DOM without touching the body of the document -->
-
             
 
             <div class="navigation">
-                <a class="adx-link" href="#">Get 20% off domestic shipping for your choice of marine, and yamaha products</a> <!-- Ad wrapper -->
+                <!--
+                <a class="adx-link" href="#">Get 20% off domestic shipping for your choice of marine, and yamaha products</a>--> <!-- Ad wrapper -->
                 <div class="container">
                     <a class="push-menu-button"><i class="fa fa-bars"></i>&nbsp;&nbsp;MENU</a>
                     <h1 class="logo-text">THE REDDICAST</h1>
@@ -147,20 +96,11 @@
                     <!-- Append post items here -->
                 </div>
             </div>
-            <style>
-            .load-more-overlay {
-                /*background: red;*/
-                height: 112px;
-                width: 100%;
-                position: absolute;
-            }
-            </style>
             <div id="load-more" class="loading-posts">
                 <div class="load-more-overlay"></div>
                 <p>Loading More Posts...</p>
                 <img src="assets/images/loading.svg"/>
             </div>
-
 
         </div> <!-- App wrapper end -->
 

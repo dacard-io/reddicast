@@ -125,6 +125,7 @@ export default class Navigation extends Component {
 
     	// Add a seperate link for adding subreddits
     	//sub_links.push(<li key="add-sub"className="add-sub"><a href="#" onClick={this.addSub.bind(this)}><i className="fa fa-plus-circle"></i>&nbsp;&nbsp;Add Sub</a></li>);
+    	sub_links.push(<li key="about-app" className="about-app"><i className="fa fa-info-circle"></i>&nbsp;&nbsp;About App</li>);
     	sub_links.push(<li key="view-sub" className="add-sub"><i className="fa fa-search search-icon"></i><input type="search" onChange={event => this.viewSub(event.target.value)} placeholder="Enter Subreddit" /></li>);
 
 

@@ -1,0 +1,120 @@
+/**
+* Navigation
+**/
+.navigation {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	.push-menu-button {
+		//border: 1px solid $content-color;
+		position: absolute;
+		padding: .5rem 1rem;
+		border: 1px solid #e0e0e0;
+    	box-shadow: 1px 1px 5px 1px #e0e0e0;
+    	cursor: pointer;
+    	left: 2.5%;
+    	transition: all 0.2s linear;
+
+    	&:hover {
+    		background: #f0f0f0;
+    	}
+	}
+	.container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-bottom: 2px solid $content-color;
+
+		.main {
+			flex-grow: 1;
+		}
+	}
+	h1 {
+		font-family: sans-serif;
+		line-height: 4rem;
+		margin: 1rem 0 0 0;
+	}
+	h2 {
+		font-size: 1.3em;
+		font-weight: 100;
+		margin: 0 0 1rem 0;
+	}
+	.adx-link {
+		background: $accent;
+		width: 100%;
+		text-align: center;
+		color: white;
+		text-decoration: none;
+		transition: all 0.1s linear;
+
+		&:hover {
+			background: $accent-hover;
+		}
+	}
+
+	&.scrolled {
+
+	}
+}
+
+
+.push-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 260px;
+	height: 100vh;
+	margin: 0 0 0 -260px;
+	transition: all 0.2s ease-in;
+	overflow: auto;
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+		margin: 0;
+		li {
+			text-align: center;
+			border-bottom: 1px solid #e0e0e0;
+			&:first-child {
+				border-top: none;
+			}
+		}
+		a {
+			display: block;
+			height: 100%;
+    		width: 100%;
+			text-decoration: none;
+			padding: 1rem 0;
+			color: black;
+			transition: all 0.2s linear;
+			&:hover {
+				color: #c0392b;
+			}
+		}
+	}
+
+	&.open {
+		// Add open styling hero
+		box-shadow: 1px 1px 5px 1px #e0e0e0;
+		// Put menu in view by removing margin
+		margin: 0;
+	}
+	input[type="search"] {
+        padding: 1rem 0;
+        text-align: center;
+        border-top: 0;
+        border-bottom: 3px solid #c0392b;
+        border-left: 0;
+        border-right: 0;
+    }
+    .search-icon {
+        width: 40px;
+        display: initial;
+        position: absolute;
+        margin-top: 1.0rem;
+        font-size: 1.3em;
+        color: #cccccc;
+    }
+}
