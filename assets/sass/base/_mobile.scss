@@ -28,6 +28,7 @@ $xs-width: 568px;
     }
     .navigation {
     	h1 {
+    		font-size: 2em;
     		margin-top: 0;
     		margin-right: 1rem;
     	}
@@ -37,6 +38,9 @@ $xs-width: 568px;
     	.container {
 	    	align-items: flex-end;
 	    }
+    }
+    .posts-container {
+    	margin-top: 4rem !important;
     }
     .post {
         width: 100%;
