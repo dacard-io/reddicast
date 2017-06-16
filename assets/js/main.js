@@ -24,6 +24,7 @@ if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && lo
 $('.push-menu-button').on("mousedown", function(){
   $('.push-menu').toggleClass('open');
   $('.app-wrapper').toggleClass('menu-open');
+  $('.navigation').toggleClass('menu-open');
 })
 
 $('.about-app').on("mousedown", function(){
