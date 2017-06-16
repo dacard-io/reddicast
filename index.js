@@ -21,5 +21,5 @@ app.get('/', function (req, res) {
     res.render('home');
 });
  
-app.listen(80);
+app.listen(3000); // AWS EC2 won't allow you to run your server on any ports below 1024 :/
 console.log("Express running")
