@@ -33,7 +33,7 @@ export default class TextPost extends Component {
 			// so I use the dangerouslySetInnerHTML on the <p> element below
 			postDescription = htmlDecode(this.props.content);
 
-			console.log(postDescription)
+			//console.log(postDescription)
 			
 			// If description too long, truncate and add ellipsis
 			if (post_title.length > title_maxlength) {
@@ -50,14 +50,25 @@ export default class TextPost extends Component {
         	<br/>
         }
 		 */
+		
+		// Check if score positive or negative, then style.
+		var score_styles = {}
+		var post_score;
+		if (this.props.score) {
+			var post_score = (<b><i className="fa fa-arrow-up"></i> {this.props.score}</b>);
+			score_styles = { color: 'orangered' };
+		} else {
+			var post_score = (<b><i className="fa fa-arrow-down"></i> {this.props.score}</b>);
+			score_styles = { color: '#9494ff' };
+		}
 
 		return (
 			<div className="block post">
                 <div className="post-content">
                     <h3 className="post-title" title={this.props.title}>{post_title}</h3>
                     <div className="post-meta">
+                    	<span className="post-score" style={score_styles}>{post_score}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
                         <span className="">{post_date}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
-                        <span className="">{this.props.subreddit}</span>&nbsp;&nbsp;-&nbsp;&nbsp;
                         <a className="post-link" href={'//reddit.com' + this.props.permalink} target="_new">View Post</a>
                     </div>
                     <div dangerouslySetInnerHTML={postDescription}></div>

@@ -27,26 +27,25 @@ export default class PostBrowser extends Component {
 
 	fetchPosts() {
 		// For pagination to work, count goes in increments of 25, alogn with a new after pagination id
-		// Url format: http://www.reddit.com/r/${subreddit}.json?limit={25}&count={post_number}&after={pagination_id}
-		
-		var redditAPI = 'http://www.reddit.com/r/' + this.props.subreddit + '.json?count=' + this.state.post_count + '&after=' + this.state.next_id;
+		// Url format: https://www.reddit.com/r/${subreddit}.json?limit={25}&count={post_number}&after={pagination_id}
+		// ARE YOU KIDDING ME, IT WASN'T WORKING ON OTHER BROWSERS BECAUSE OF HTTPS...
+		var redditAPI = 'https://www.reddit.com/r/' + this.props.subreddit + '.json?count=' + this.state.post_count + '&after=' + this.state.next_id;
 		axios.get(redditAPI)
 	      .then(res => {
 	        const posts = res.data.data.children.map(obj => obj.data);
-	        this.setState({ posts: this.state.posts.concat(posts) }); // Can't push state, so you have to use concat to return new array and add object to it
-	        this.setState({ next_id: res.data.data.after });
-	        this.setState({ post_count: this.state.post_count + 25 });
-	        this.setState({ loading: false});
+	        this.setState({ 
+	        	posts: this.state.posts.concat(posts),
+	        	next_id: res.data.data.after,
+	        	post_count: this.state.post_count + 25,
+	        	loading: false
+        	}); // Can't push state, so you have to use concat to return new array and add object to it
+        	// Had multiple setStates. Condensed to one so it doesn't update 4 TIMES
 
 	        // Run packery afterwards to create layout
 	    	var post_container = document.querySelector('.posts-container');
 		  	var isotope_properties = new Packery (post_container, {
 			    itemSelector: '.post',
 		  	});
-
-	        console.log(this.state.posts);
-	        console.log("Next ID: ", this.state.next_id ,", Count: ", this.state.post_count)
-	        console.log("API URL: ", redditAPI)
 	      }).catch(function (error) {
 		    console.log(error);
 		    // Append error element
@@ -70,7 +69,7 @@ export default class PostBrowser extends Component {
 		// Render a button to load more posts
 		//ReactDOM.render(<a onClick={event => this.setState({loading: true})}>Load More Posts</a>, document.querySelector('.load-more-overlay'));
 
-	  	console.log("Next ID: ", this.state.next_id ,", Count: ", this.state.post_count)
+	  	//console.log("Next ID: ", this.state.next_id ,", Count: ", this.state.post_count)
 
 	}
 
@@ -80,8 +79,10 @@ export default class PostBrowser extends Component {
 		// If state is loading, fetchPosts
 		if (this.state.loading) {
 				this.fetchPosts();
-				this.setState({scrolled: false})
-				this.setState({loading: false})
+				this.setState({
+					scrolled: false,
+					loading: false
+				})
 		} else {
 			// If not loading, render the waypoint
 			ReactDOM.render(
@@ -116,7 +117,8 @@ export default class PostBrowser extends Component {
 		    				date={post.created} 
 		    				permalink={post.permalink}
 		    				thumbnail={post.thumbnail}
-		    				link={post.url} />
+		    				link={post.url}
+		    				score={post.score} />
 	    			);
     			} else {
     				// fallback to textpost
@@ -124,13 +126,23 @@ export default class PostBrowser extends Component {
 
     		} else {
     		 	// If post score higher than value, its a featured post
-    		 	if (post.score > 10000) {
+    		 	if (post.score > 30000) {
     				posts_arr.push(
 		    			<TextPostHeadline key={post.id} 
 		    				title={post.title} 
 		    				subreddit={post.subreddit_name_prefixed}
 		    				date={post.created} 
-		    				permalink={post.permalink} />
+		    				permalink={post.permalink}
+		    				score={post.score} />
+	    			);
+    			} else if (post.score > 10000 && post.score < 30000) {
+    				posts_arr.push(
+		    			<TextPostHeadline key={post.id} 
+		    				title={post.title} 
+		    				subreddit={post.subreddit_name_prefixed}
+		    				date={post.created} 
+		    				permalink={post.permalink}
+		    				score={post.score} />
 	    			);
     			} else {
     				// Push a regular text post
@@ -140,7 +152,8 @@ export default class PostBrowser extends Component {
 		    				content={post.selftext_html}
 		    				subreddit={post.subreddit_name_prefixed}
 		    				date={post.created} 
-		    				permalink={post.permalink} />
+		    				permalink={post.permalink}
+		    				score={post.score} />
 	    			);
 	    		}
     		}

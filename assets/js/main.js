@@ -17,7 +17,6 @@ if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && lo
   }
 }});
 
-
 }); // End of Document Ready
 
 // Push menu button action
